@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AMI · El mensaje que nadie vio completo</title>
+  <link rel="stylesheet" href="/src/ui/styles.css" />
+</head>
+<body>
+  <main id="app">
+    <div id="stage" aria-hidden="true"></div>
+
+    <!-- Toda la interfaz es HTML: accesible por teclado y lectores de pantalla -->
+    <section id="start" class="panel">
+      <h1>AMI · <span data-i18n="subtitle">El mensaje que nadie vio completo</span></h1>
+      <p class="note" data-i18n="demoNote">Demostración técnica: arte, guion y sonido provisionales.</p>
+      <div class="row">
+        <button type="button" data-lang="es" aria-pressed="true">Español</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+      <div class="row">
+        <button type="button" id="btn-new" class="primary" data-i18n="start">Empezar</button>
+        <button type="button" id="btn-continue" hidden data-i18n="continue">Continuar partida</button>
+      </div>
+    </section>
+
+    <section id="dialog" class="dialog" hidden>
+      <p id="speaker" class="speaker"></p>
+      <p id="line" aria-live="polite"></p>
+      <div id="choices" class="choices"></div>
+      <button type="button" id="btn-next" class="primary" data-i18n="next">Siguiente</button>
+    </section>
+
+    <section id="pause" class="panel" hidden role="dialog" aria-labelledby="pause-title">
+      <h2 id="pause-title" data-i18n="pauseTitle">¡Pausa de investigación!</h2>
+      <p data-i18n="pauseText">Revisad las tarjetas en vuestra mesa. Cuando terminéis, vuestro docente os dará una palabra clave.</p>
+      <form id="pause-form" class="row">
+        <label for="pause-code" class="sr-only" data-i18n="codeLabel">Palabra clave</label>
+        <input id="pause-code" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+        <button type="submit" class="primary" data-i18n="resume">Seguir</button>
+      </form>
+      <p id="pause-error" class="error" role="alert"></p>
+    </section>
+
+    <button type="button" id="btn-facilitator" class="corner" data-i18n="facilitator">Facilitador</button>
+    <section id="facilitator" class="panel" hidden role="dialog" aria-labelledby="fac-title">
+      <h2 id="fac-title" data-i18n="facilitator">Facilitador</h2>
+      <form id="fac-login" class="row">
+        <label for="fac-code" class="sr-only" data-i18n="codeLabel">Palabra clave</label>
+        <input id="fac-code" type="password" autocomplete="off" />
+        <button type="submit" data-i18n="enter">Entrar</button>
+      </form>
+      <div id="fac-tools" class="column" hidden>
+        <button type="button" data-fac="repeat" data-i18n="facRepeat">Repetir escena</button>
+        <button type="button" data-fac="skipPause" data-i18n="facSkip">Saltar pausa</button>
+        <button type="button" data-fac="ch1" data-i18n="facCh1">Ir al capítulo 1</button>
+        <button type="button" data-fac="ch2" data-i18n="facCh2">Ir al capítulo 2</button>
+        <button type="button" data-fac="ch3" data-i18n="facCh3">Ir al capítulo 3</button>
+        <button type="button" data-fac="reset" data-i18n="facReset">Reiniciar partida</button>
+      </div>
+      <button type="button" id="fac-close" data-i18n="close">Cerrar</button>
+    </section>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
